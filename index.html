@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- For special chracters-->
+  <title>Automation Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Automation Simulator</h1>
+  <div class="form-container">
+    <label for="action">Action Type:</label>
+    <select id="action"> <!-- Create drop down-->
+      <option>Email</option>
+      <option>File Upload</option>
+      <option>Alert</option>
+    </select>
+
+    <label for="department">Department:</label>
+    <select id="department">
+      <option>Sales</option>
+      <option>Finance</option>
+      <option>Logistics</option>
+      <option>HR</option>
+    </select>
+
+    <label for="trigger">Trigger Condition:</label>
+    <select id="trigger">
+      <option>New Order Placed</option>
+      <option>Inventory Low</option>
+      <option>Invoice Approved</option>
+      <option>New Employee Added</option>
+    </select>
+
+    <button id="generateBtn">Generate Automation</button>
+
+    <div id="result"></div> <!-- div is used to group-->
+  </div>
+
+  <script src="script.js"></script> <!-- Load and run javascript code, place at bottom of html-->
+</body>
+</html>
