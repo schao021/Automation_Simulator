@@ -1,3 +1,5 @@
+savedRules = []; // Used for storing all the rules to be displayed after
+
 document.getElementById("generateBtn").addEventListener("click", function() { // Function finds button generateBtn and event occurs after clicking it
   const action = document.getElementById("action").value; // Gets whatever inside the option
   const dept = document.getElementById("department").value;
@@ -21,4 +23,33 @@ document.getElementById("generateBtn").addEventListener("click", function() { //
   const deptBox = `<div class="flow-box">${dept}</div>`;
   //Add into the flowchart container
   flowchart.innerHTML = triggerBox + arrow1 + actionBox + arrow2 + deptBox;
+});
+
+document.getElementById("saveRulesBtn").addEventListener("click", function() { // Push the rule after saving it
+  const flowchart = document.getElementById("flowchart");
+  if (flowchart.innerHTML.trim() !== "") { 
+    savedRules.push(flowchart.innerHTML);
+    alert("Rule saved!");
+  } else {
+    alert("Generate an automation rule first before saving.");
+  }
+});
+
+document.getElementById("printRulesBtn").addEventListener("click", function() {
+  const result = document.getElementById("result");
+  result.innerHTML = "";
+  const flowchart = document.getElementById("flowchart");
+  flowchart.innerHTML = "";
+  const printArea = document.getElementById("printArea");
+  printArea.innerHTML = "";
+  // Loop through all saved rules and add them to printArea
+  for (let i = 0; i < savedRules.length; i++) {
+    const ruleDiv = document.createElement("div");
+    ruleDiv.innerHTML = savedRules[i];  // Set HTML for the rule
+    printArea.appendChild(ruleDiv);
+    if (i < savedRules.length - 1) {
+      const hr = document.createElement("hr");
+      printArea.appendChild(hr);
+    }
+  }
 });
